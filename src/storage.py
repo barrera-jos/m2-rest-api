@@ -34,7 +34,7 @@ class DatasetStorage:
         
         df = item["data"]
         metadata = {
-            "dataset_id": dataset_id,
+            "id": dataset_id,
             "filename": item["filename"],
             "rows": df.shape[0],
             "columns": df.shape[1],
@@ -51,8 +51,8 @@ class DatasetStorage:
             return False
         
         item['data'] = df.copy()
-        logger.debug(f'Updated dataset: id{dataset_id}')
-        return item["data"].copy()
+        logger.debug(f'Updated dataset: id={dataset_id}')
+        return True
 
     def clear(self):
         """Clear all data and reset the ID counter."""
